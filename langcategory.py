@@ -16,7 +16,10 @@ def generate_lang_as_category(generator, writer):
     self = generator
     self.languages = defaultdict(list)
 
-    template = self.get_template('category')
+    try:
+        template = self.get_template('language')
+    except TemplateNotFound:
+        template = self.get_template('category')
 
     if not self.settings['LANGUAGE_SAVE_AS']:
         return
@@ -52,6 +55,7 @@ def generate_lang_as_category(generator, writer):
               dates=dates,
               paginated={'articles': items, 'dates': dates},
               page_name=lang_wrapper.page_name,
+              language=lang,
               all_articles=items
           )
 
