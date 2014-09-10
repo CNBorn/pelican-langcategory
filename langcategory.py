@@ -48,16 +48,26 @@ def generate_lang_as_category(generator, writer):
             override_in_default_lang_items.append(i)
         items = override_in_default_lang_items
 
+        try:
+            import pycountry
+            lang_obj = pycountry.languages.get(alpha2=str(lang))
+            language_name = lang_obj.name if lang_obj else lang
+        except ImportError:
+            language_name = lang
+        except KeyError:
+            language_name = lang
+
         writer.write_file(lang_wrapper.save_as,
-              template,
-              self.context, 
-              articles=items,
-              dates=dates,
-              paginated={'articles': items, 'dates': dates},
-              page_name=lang_wrapper.page_name,
-              language=lang,
-              all_articles=items
-          )
+            template,
+            self.context,
+            articles=items,
+            dates=dates,
+            paginated={'articles': items, 'dates': dates},
+            page_name=lang_wrapper.page_name,
+            language=lang,
+            language_name=language_name,
+            all_articles=items
+        )
 
 def register():
     signals.article_writer_finalized.connect(generate_lang_as_category)

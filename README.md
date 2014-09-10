@@ -24,7 +24,20 @@ Language template is recommended to be included in your pelican-theme, which can
 
     {% extends "index.html" %}
     {% block content_title %}
-    <h2>Articles in {{ language }}</h2>
+    <h2>Articles in {{ language_name }}</h2>
     {% endblock %}
 
-the 'language' varible will be automatically replaced by language name.
+the 'language_name' varible will be automatically replaced by language name.
+
+Available varibles:
+
+    * {{ language }} language such as 'en', 'zh' as you write in your content files
+    * {{ language_name}} language name such as 'English', 'Chinese'
+    
+## Dependencies
+
+In order to use 'language_name' varible, you have to install 'pycountry' package.
+
+    pip install pycountry
+    
+Without this package installed, 'language_name' will not show language's fullname but language code such as 'en', as same as 'language' varible.
