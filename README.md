@@ -14,7 +14,7 @@ Edit your *pelicanconf.py*:
     LANGUAGE_URL = 'lang/{lang}/'
     LANGUAGE_SAVE_AS = 'lang/{lang}/index.html'
     
-Later you can visit url like '/lang/en/', '/lang/cn/' to browse your articles just like categories.
+Later you can visit url like '/lang/en/', '/lang/zh/' to browse your articles just like categories.
 
 ## Template
 
@@ -31,8 +31,8 @@ the 'language_name' varible will be automatically replaced by language name.
 
 Available varibles:
 
-    * {{ language }} language such as 'en', 'zh' as you write in your content files
-    * {{ language_name}} language name such as 'English', 'Chinese'
+  * {{ language }} language such as 'en', 'zh' as you write in your content files
+  * {{ language_name}} language name such as 'English', 'Chinese'
     
 ## Dependencies
 
