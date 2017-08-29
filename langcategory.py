@@ -50,7 +50,7 @@ def generate_lang_as_category(generator, writer):
 
         try:
             import pycountry
-            lang_obj = pycountry.languages.get(alpha2=str(lang))
+            lang_obj = pycountry.languages.get(alpha_2=str(lang))
             language_name = lang_obj.name if lang_obj else lang
         except ImportError:
             language_name = lang
